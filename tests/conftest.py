@@ -9,6 +9,7 @@ from fast_zero.app import app
 from fast_zero.database import get_session
 from fast_zero.models import Base, User
 from fast_zero.security import get_password_hash
+from fast_zero.settings import Settings
 
 
 class UserFactory(factory.Factory):
@@ -63,16 +64,12 @@ def client(session):
 
 @pytest.fixture
 def session():
-    engine = create_engine(
-        'sqlite:///:memory:',
-        connect_args={'check_same_thread': False},
-        poolclass=StaticPool,
-    )
+    engine = create_engine(Settings().DATABASE_URL)
+    Session = sessionmaker(autocommit=False, autoflush=False, bind=engine)
     Base.metadata.create_all(engine)
-
-    Session = sessionmaker(bind=engine)
-
-    yield Session()
+    with Session() as session:
+        yield session
+        session.rollback()
 
     Base.metadata.drop_all(engine)
 
