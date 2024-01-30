@@ -20,7 +20,6 @@ jobs:
           POSTGRES_USER: app_user
         ports:
           - 5432:5432
-        container_name: fastzero_database
 
     steps:
       - name: Copia os arquivos do repositório
