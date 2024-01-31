@@ -17,10 +17,10 @@ para validar que os usuários possam gerenciar apenas suas próprias tarefas
 ### Variáveis de ambiente
 Para o funcionamento corredo da aplicação, é necessário criar um arquivo .env e adicionar as seguintes variáveis:
 
-DATABASE_URL -> Url de conexão para o banco de dados
-SECRET_KEY -> Chave de criptografia para a autenticação JWT
-ALGORITHM -> Algoritmo de encriptação para a autenticação JWT
-ACCESS_TOKEN_EXPIRE_MINUTES -> Tempo para a expiração do token JWT
+ - DATABASE_URL -> Url de conexão para o banco de dados
+ - SECRET_KEY -> Chave de criptografia para a autenticação JWT
+ - ALGORITHM -> Algoritmo de encriptação para a autenticação JWT
+ - ACCESS_TOKEN_EXPIRE_MINUTES -> Tempo para a expiração do token JWT
 
 #### Poetry
 A biblioteca Poetry está sendo utilizada como gerenciador de dependencias do projeto.
